@@ -1,37 +1,13 @@
 # site.pp
 include "apt"
-apt::ppa { "ppa:ondrej/php5": }
+iapt::ppa { "ppa:ondrej/php5": }
 
-include "test"
-include "vim"
-include "mysql"
-include "php"
-include "php::pecl::xdebug"
-include "php::pecl::gd"
-include "php::pecl::curl"
-include "php::pecl::sqlite"
-
-include "git"
-git::repo {"queroservoluntario.com":
-    target => '/var/www/queroservoluntario.com',
-    source => 'git://github.com/EHER/voluntarios.git'
-}
-exec { "/usr/bin/make install":
-    cwd => "/var/www/queroservoluntario.com"
+package {
+    ["php5-curl", "php5-fpm", "php5-common", "php5", "php5-cli", "php5-sqlite", "php5-gd", "php5-xdebug"]:
+	ensure=> installed
 }
 
-include "apache"
-apache::vhost{[
-                "chegamos.com",
-                "chegamos.com.br",
-                "m.chegamos.com",
-                "encaixote.me",
-                "eher.com.br",
-                "alexandreeher.com",
-                "skd.com.br",
-                "paginasbrancas.com.br",
-                "queroservoluntario.com",
-                "neuroeducacaosorocaba.com.br"
-            ]:
-            replace => true,
+package {
+    ["nginx"]:
+	ensure=> installed
 }
