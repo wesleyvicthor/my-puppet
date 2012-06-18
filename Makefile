@@ -5,7 +5,7 @@ default:
 	@echo "edit"
 
 download:
-	git clone git://github.com/EHER/my-puppet.git /etc/puppet
+	git clone git://github.com/wesleyvicthor/my-puppet.git /etc/puppet
 	cd /etc/puppet
 
 install:

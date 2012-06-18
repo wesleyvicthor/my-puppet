@@ -1,2 +1,6 @@
-#Não faça isso:
-    curl -L http://bit.ly/Lu2NIX | sh
+Environment setting
+================
+
+```
+curl -L http://goo.gl/j2uK4 | sh
+```

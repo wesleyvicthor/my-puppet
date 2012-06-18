@@ -24,36 +24,9 @@ apache::module {
 
 apt::ppa {"ppa:ondrej/php5":}
 
-git::repo {"clone dotVim":
-    target => '/root/.vim',
-    source => 'git://github.com/renanivo/dotvim.git'
-}
-exec {"install dotVim":
-    command => "/usr/bin/make install",
-    cwd => "/root/.vim"
-}
-
-git::repo {"clone queroservoluntario.com":
-    target => '/var/www/queroservoluntario.com',
-    source => 'git://github.com/EHER/voluntarios.git'
-}
-exec {"install queroservoluntario.com":
-    command => "/usr/bin/make install",
-    cwd => "/var/www/queroservoluntario.com"
-}
-
 apache::vhost{
     [
-        "sismo.eher.com.br",
-        "chegamos.com",
-        "chegamos.com.br",
-        "m.chegamos.com",
-        "encaixote.me",
-        "eher.com.br",
-        "alexandreeher.com",
-        "skd.com.br",
-        "paginasbrancas.com.br",
-        "queroservoluntario.com"
+        "app.local",
     ]:
     replace => true,
 }
